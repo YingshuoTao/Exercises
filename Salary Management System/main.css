@@ -1,0 +1,12 @@
+body {
+  margin: 20px;
+}
+
+#staff_add {
+  position: absolute;
+}
+
+#staff_list {
+  position: absolute;
+  left: 400px;
+}

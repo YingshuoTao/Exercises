@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Salary Management System</title>
+    <link rel="stylesheet" href="node_modules\normalize.css\normalize.css">
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
+    <link rel="stylesheet" href="node_modules\font-awesome\css\font-awesome.css">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <h4>Salary Management System</h4>
+    <br>
+    <form id="staff_add" action="./index.html">
+      <p>Add a Personel</p>
+      <p>Name: <input type="text" name="name" required></p>
+      <p>Gender: <input type="radio" name="gender" value="male" checked>Male</input>
+              <input type="radio" name="gender" value="female">Female</input></p>
+      <p>Age: <input type="number" name="age" required></p>
+      <button id="btn_add">Add!</button>
+    </form>
+    <div id="staff_list"></div>
+    <script src="node_modules\jquery\dist\jquery.js"></script>
+    <script src="node_modules\bootstrap\dist\js\bootstrap.js"></script>
+    <script src="node_modules\vue\dist\vue.js"></script>
+    <script src="node_modules\vuex\dist\vuex.js"></script>
+    <script src="node_modules\vue-router\dist\vue-router.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
