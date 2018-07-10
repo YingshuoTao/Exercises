@@ -10,3 +10,13 @@ body {
   position: absolute;
   left: 400px;
 }
+
+ul {
+  list-style: none;
+  margin-left: -50px;
+  line-height: 1.5;
+}
+
+li {
+  margin: 10px;
+}

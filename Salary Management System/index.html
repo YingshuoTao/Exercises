@@ -13,20 +13,31 @@
   <body>
     <h4>Salary Management System</h4>
     <br>
-    <form id="staff_add" action="./index.html">
-      <p>Add a Personel</p>
-      <p>Name: <input type="text" name="name" required></p>
-      <p>Gender: <input type="radio" name="gender" value="male" checked>Male</input>
-              <input type="radio" name="gender" value="female">Female</input></p>
-      <p>Age: <input type="number" name="age" required></p>
-      <button id="btn_add">Add!</button>
-    </form>
-    <div id="staff_list"></div>
+    <div id="staff_management">
+      <form id="staff_add" action="./index.html">
+        <p><b>Add a Personel</b></p>
+        <p>Name: <input v-model="new_personel.name" type="text" name="name" required></p>
+        <p>Gender: <input v-model="new_personel.gender" type="radio" name="gender" value="male">Male</input>
+                   <input v-model="new_personel.gender" type="radio" name="gender" value="female">Female</input></p>
+        <p>Age: <input v-model="new_personel.age" type="number" name="age" required></p>
+        <button id="btn_add" @click.prevent="personel_add">Add!</button>
+      </form>
+      <div id="staff_list">
+        <p><b>Staff Information</b></p>
+        <ul>
+          <li v-for="personel in staff">
+            {{ "Name: " + personel.name +
+            ",  Gender: " + personel.gender +
+            ",  Age: " + personel.age }}
+            <button class="btn_remove" @click="personel_remove">Remove</button></li>
+        </ul>
+      </div>
+    </div>
     <script src="node_modules\jquery\dist\jquery.js"></script>
     <script src="node_modules\bootstrap\dist\js\bootstrap.js"></script>
     <script src="node_modules\vue\dist\vue.js"></script>
     <script src="node_modules\vuex\dist\vuex.js"></script>
     <script src="node_modules\vue-router\dist\vue-router.js"></script>
-    <script src="main.js"></script>
+    <script src="main(Vue).js"></script>
   </body>
 </html>

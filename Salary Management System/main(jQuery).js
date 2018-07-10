@@ -24,6 +24,7 @@ $(function() {
       const _name = $("input[name='name']").val();
       const _gender = $("input[name='gender']:checked").val();
       const _age = $("input[name='age']").val();
+      //验证表单数据并同步
       if (_name && _age) {
         new_staff = {"name": _name, "gender": _gender, "age": _age};
         staff_json.push(new_staff);
@@ -33,17 +34,6 @@ $(function() {
   }
 
   staff_add();
-
-
-
-  //删除员工
-  function staff_remove() {
-    $(".staff_del").on("remove", function() {
-      synchronize();
-    });
-  }
-
-  staff_remove();
 
 
 
@@ -61,7 +51,7 @@ $(function() {
     }
     //更新localStorage
     localStorage.staff = JSON.stringify(staff_json);
-    //更新按钮事件
+    //更新删除按钮事件
     $(".staff_del").on("click", function() {
       const index = $(this).parent().index();
       $(this).parent().remove();
