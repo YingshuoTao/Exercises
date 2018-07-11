@@ -6,17 +6,39 @@ body {
   position: absolute;
 }
 
+#enterprise_info {
+  position:absolute;
+  top: 400px;
+}
+
 #staff_list {
   position: absolute;
-  left: 400px;
+  left: 300px;
 }
 
-ul {
-  list-style: none;
-  margin-left: -50px;
-  line-height: 1.5;
+#personel_info {
+  position: absolute;
+  left: 1000px;
 }
 
-li {
-  margin: 10px;
+#staff_add th, #staff_add td {
+  padding: 5px;
+}
+
+#enterprise_info th, #enterprise_info td {
+  padding: 5px;
+}
+
+#staff_list th, #staff_list td{
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+#staff_list input {
+  max-width: 120px;
+}
+
+#personel_info th, #personel_info td {
+  border: 1px solid black;
+  padding: 5px 10px;
 }

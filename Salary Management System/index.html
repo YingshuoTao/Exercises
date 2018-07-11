@@ -14,23 +14,122 @@
     <h4>Salary Management System</h4>
     <br>
     <div id="staff_management">
-      <form id="staff_add" action="./index.html">
-        <p><b>Add a Personel</b></p>
-        <p>Name: <input v-model="new_personel.name" type="text" name="name" required></p>
-        <p>Gender: <input v-model="new_personel.gender" type="radio" name="gender" value="male">Male</input>
-                   <input v-model="new_personel.gender" type="radio" name="gender" value="female">Female</input></p>
-        <p>Age: <input v-model="new_personel.age" type="number" name="age" required></p>
-        <button id="btn_add" @click.prevent="personel_add">Add!</button>
-      </form>
+      <div id="staff_add">
+        <h6>Add a Personel</h6>
+        <table>
+          <tr>
+            <td>*Name:</td>
+            <td><input v-model="new_personel.name" type="text" name="name" required></td>
+          </tr>
+          <tr>
+            <td>Gender:</td>
+            <td>
+              <input v-model="new_personel.gender" type="radio" name="gender" value="male">Male</input>
+              <input v-model="new_personel.gender" type="radio" name="gender" value="female">Female</input>
+            </td>
+          </tr>
+          <tr>
+            <td>Age:</td>
+            <td><input v-model="new_personel.age" type="number" name="age"></td>
+          </tr>
+          <tr>
+            <td>Position:</td>
+            <td><input v-model="new_personel.position" type="text" name="position"></td>
+          </tr>
+          <tr>
+            <td>Salary:</td>
+            <td><input v-model="new_personel.salary" type="number" name="salary"></td>
+          </tr>
+          <tr>
+            <td>Insurance:</td>
+            <td><input v-model="new_personel.salary" type="number" name="insurance"></td>
+          </tr>
+        </table>
+        <button id="btn_add" @click="personel_add">Add!</button>
+      </div>
+      <div id="enterprise_info" v-if="staff[0]">
+        <h6>Enterprise Information</h6>
+        <table>
+          <tr>
+            <td>Staff Number:</td>
+            <td>{{ staff_number }}</td>
+          </tr>
+          <tr>
+            <td>Total Cashflow:</td>
+            <td>${{ total_cashflow }}</td>
+          </tr>
+          <tr>
+            <td>Taxes & Insurance:</td>
+            <td>${{ taxes_and_insurance }}</td>
+          </tr>
+        </table>
+      </div>
       <div id="staff_list">
-        <p><b>Staff Information</b></p>
-        <ul>
-          <li v-for="personel in staff">
-            {{ "Name: " + personel.name +
-            ",  Gender: " + personel.gender +
-            ",  Age: " + personel.age }}
-            <button class="btn_remove" @click="personel_remove">Remove</button></li>
-        </ul>
+        <h6>Staff Information ({{ edit_mode? "Edit Mode": "View Mode" }})</span></h6>
+        <table v-if="staff[0]">
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Insurance</th>
+            <th><button @click="edit_toggle">Toggle Mode</button></th>
+          </tr>
+          <tr v-if="edit_mode" v-for="personel in staff">
+            <td><input @change="personel_edit" :value="personel.name" type="text"></input></td>
+            <td>
+              <select @change="personel_edit" :value="personel.gender" type="select">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </td>
+            <td><input @change="personel_edit" :value="personel.age" type="number"></input></td>
+            <td><input @change="personel_edit" :value="personel.position" type="text"></input></td>
+            <td><input @change="personel_edit" :value="personel.salary" type="number"></input></td>
+            <td><input @change="personel_edit" :value="personel.insurance" type="number"></input></td>
+            <td><button @click="personel_remove">Remove</button></td>
+          </tr>
+          <tr v-if="!edit_mode" v-for="personel in staff">
+            <td>{{ personel.name }}</td>
+            <td>{{ personel.gender }}</td>
+            <td>{{ personel.age }}</td>
+            <td>{{ personel.position }}</td>
+            <td>{{ personel.salary }}</td>
+            <td>{{ personel.insurance }}</td>
+            <td><button @click="personel_detail">Detail</button></td>
+          </tr>
+        </table>
+        <p v-if="!staff[0]">No staff data.</p>
+      </div>
+      <div id="personel_info" v-if="current_personel">
+        <h6>Personel Information</h6>
+        <table>
+          <tr>
+            <th>Name</th>
+            <td>{{ current_personel.name }}</td>
+          </tr>
+          <tr>
+            <th>Position</th>
+            <td>{{ current_personel.position }}</td>
+          </tr>
+          <tr>
+            <th>Gross Salary</th>
+            <td>{{ current_personel.salary }}</td>
+          </tr>
+          <tr>
+            <th>Insurance</th>
+            <td>{{ current_personel.insurance }}</td>
+          </tr>
+          <tr>
+            <th>Taxes</th>
+            <td>{{ personel_taxes }}</td>
+          </tr>
+          <tr>
+            <th>Net Salary</th>
+            <td>{{ personel_net_salary }}</td>
+          </tr>
+        </table>
       </div>
     </div>
     <script src="node_modules\jquery\dist\jquery.js"></script>
