@@ -84,6 +84,6 @@ button:hover {
 }
 
 .focus {
-  background-color: azure;
+  background-color: #F8FFFF;
   box-shadow: 2px 2px lightgrey;
 }
