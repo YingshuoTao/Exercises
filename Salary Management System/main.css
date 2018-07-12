@@ -1,24 +1,37 @@
 body {
-  margin: 20px;
+  margin: 5px;
+}
+
+h4 {
+  position: relative;
+  margin: 10px;
 }
 
 #staff_add {
-  position: absolute;
+  position: relative;
+  float: left;
+  display: inline-block;
+  margin: 10px;
 }
 
 #enterprise_info {
-  position:absolute;
-  top: 400px;
+  position: relative;
+  float: left;
+  display: inline-block;
 }
 
 #staff_list {
-  position: absolute;
-  left: 300px;
+  position: relative;
+  float: left;
+  display: inline-block;
+  margin: 10px;
 }
 
 #personel_info {
-  position: absolute;
-  left: 1000px;
+  position: relative;
+  float: left;
+  display: inline-block;
+  margin: 10px;
 }
 
 #staff_add th, #staff_add td {
@@ -29,9 +42,10 @@ body {
   padding: 5px;
 }
 
-#staff_list th, #staff_list td{
+#staff_list th, #staff_list td {
   border: 1px solid black;
-  padding: 5px 10px;
+  padding: 5px 20px;
+  text-align: center;
 }
 
 #staff_list input {
@@ -41,4 +55,36 @@ body {
 #personel_info th, #personel_info td {
   border: 1px solid black;
   padding: 5px 10px;
+}
+
+span {
+  color: blue;
+}
+
+button {
+  background-color: #0088ff;
+  color: white;
+  border: 2px solid #0088ff;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+button:hover {
+  background-color: white;
+  color: #0088ff;
+  box-shadow: 1px 1px lightgrey;
+}
+
+#btn_add {
+  float: right;
+  margin: 10px;
+}
+
+.focus {
+  background-color: azure;
+  box-shadow: 2px 2px lightgrey;
 }

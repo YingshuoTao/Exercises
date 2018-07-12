@@ -15,7 +15,7 @@
     <br>
     <div id="staff_management">
       <div id="staff_add">
-        <h6>Add a Personel</h6>
+        <h6><b>Add a Personel</b></h6>
         <table>
           <tr>
             <td>*Name:</td>
@@ -24,7 +24,7 @@
           <tr>
             <td>Gender:</td>
             <td>
-              <input v-model="new_personel.gender" type="radio" name="gender" value="male">Male</input>
+              <input v-model="new_personel.gender" type="radio" name="gender" value="male">Male</input>&nbsp;
               <input v-model="new_personel.gender" type="radio" name="gender" value="female">Female</input>
             </td>
           </tr>
@@ -42,30 +42,32 @@
           </tr>
           <tr>
             <td>Insurance:</td>
-            <td><input v-model="new_personel.salary" type="number" name="insurance"></td>
+            <td><input v-model="new_personel.insurace" type="number" name="insurance"></td>
           </tr>
         </table>
         <button id="btn_add" @click="personel_add">Add!</button>
-      </div>
-      <div id="enterprise_info" v-if="staff[0]">
-        <h6>Enterprise Information</h6>
-        <table>
-          <tr>
-            <td>Staff Number:</td>
-            <td>{{ staff_number }}</td>
-          </tr>
-          <tr>
-            <td>Total Cashflow:</td>
-            <td>${{ total_cashflow }}</td>
-          </tr>
-          <tr>
-            <td>Taxes & Insurance:</td>
-            <td>${{ taxes_and_insurance }}</td>
-          </tr>
-        </table>
+        <br>
+        <br>
+        <div id="enterprise_info" v-if="staff[0]">
+          <h6><b>Enterprise Information</b></h6>
+          <table>
+            <tr>
+              <th>Staff Number:</th>
+              <th>{{ staff_number }}</th>
+            </tr>
+            <tr>
+              <th>Total Cashflow:</th>
+              <th>${{ total_cashflow }}</th>
+            </tr>
+            <tr>
+              <th>Taxes & Insurance:</th>
+              <th>${{ taxes_and_insurance }}</th>
+            </tr>
+          </table>
+        </div>
       </div>
       <div id="staff_list">
-        <h6>Staff Information ({{ edit_mode? "Edit Mode": "View Mode" }})</span></h6>
+        <h6><b>Staff Information <span>({{ edit_mode? "Edit Mode": "View Mode" }})</span></b></h6>
         <table v-if="staff[0]">
           <tr>
             <th>Name</th>
@@ -74,7 +76,7 @@
             <th>Position</th>
             <th>Salary</th>
             <th>Insurance</th>
-            <th><button @click="edit_toggle">Toggle Mode</button></th>
+            <th><button @click="edit_toggle">Mode</button></th>
           </tr>
           <tr v-if="edit_mode" v-for="personel in staff">
             <td><input @change="personel_edit" :value="personel.name" type="text"></input></td>
@@ -103,7 +105,7 @@
         <p v-if="!staff[0]">No staff data.</p>
       </div>
       <div id="personel_info" v-if="current_personel">
-        <h6>Personel Information</h6>
+        <h6><b>Personel Information</b></h6>
         <table>
           <tr>
             <th>Name</th>
@@ -137,6 +139,6 @@
     <script src="node_modules\vue\dist\vue.js"></script>
     <script src="node_modules\vuex\dist\vuex.js"></script>
     <script src="node_modules\vue-router\dist\vue-router.js"></script>
-    <script src="main(Vue).js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
