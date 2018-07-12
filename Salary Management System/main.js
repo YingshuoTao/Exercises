@@ -136,7 +136,7 @@ function beautify() {
   if (staff.edit_mode) {
     $table.css("padding", "5px");
   } else {
-    $table.css("padding", "5px 20px");
+    $table.css("padding", "5px 15px");
   }
   $form.on("mouseover", function() {
     $(this).addClass("focus");
