@@ -8,8 +8,11 @@ $(function() {
 
   var color = "#000000",
       thickness = 5,
+      //points保存了当前step的所有点
       points = [],
+      //step为当前一笔画出的图形
       step = [],
+      //stack为保存了所有step的二维数组栈
       stack = [],
       drawing = false;
 
@@ -43,6 +46,7 @@ $(function() {
 
   function draw() {
     if (drawing) {
+      //画点(浏览器渲染内置刷新频率约16ms，快速移动时绘制图形为散点)
       const coordinate = d3.mouse(this);
       const point = svg.append("circle")
                        .attr("cx", coordinate[0])
@@ -51,6 +55,7 @@ $(function() {
                        .style("fill", color);
       points.push(point);
       step.push(point);
+      //连线（用直线连接绘制的散点确保视觉效果）
       if (points.length>1) {
         const p1 = points[points.length-2];
         const p2 = points[points.length-1];
@@ -66,6 +71,7 @@ $(function() {
     }
   }
 
+  //清空stack
   function erase() {
     const confirm = window.confirm("Are you sure " +
                                    "you want to erase all the drawings?");
@@ -79,6 +85,7 @@ $(function() {
     }
   }
 
+  //清除stack中末位的step
   function undo() {
     if (stack.length>0) {
       var temp = stack.pop();
@@ -89,6 +96,7 @@ $(function() {
   }
 
 
+  //d3默认不支持同一事件绑定多个处理函数，因此采用e1、e2两个命名空间
   svg.on("mousedown.e1", function() {
        drawing = true;
    }).on("mousedown.e2", draw)
